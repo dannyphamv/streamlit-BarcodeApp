@@ -8,6 +8,7 @@ import json
 
 # --- Streamlit and data processing imports ---
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 
 # --- Optional barcode imports ---
@@ -164,7 +165,7 @@ def log_print_history():
     """
     global input_barcode
     barcode_value = input_barcode if "input_barcode" in globals() else ""
-    now = datetime.now().strftime("%m/%d/%Y %I:%M %p")
+    now = datetime.now().strftime("%m/%d/%Y %I:%M:%S %p")
     write_header = False
     try:
         with open(CSV_FILE, "r", newline="", encoding="utf-8") as history_file:
@@ -210,6 +211,43 @@ input_barcode = st.text_input(
     key="barcode_input",
     placeholder="ex. DT6qbz2RRMA",
 )
+
+# Auto-focus using HTML/JavaScript injection
+components.html("""
+<script>
+    function focusInput() {
+        // Try multiple selectors to find the input
+        let input = parent.document.querySelector('input[data-testid="stTextInput"] input') ||
+                   parent.document.querySelector('input[aria-label*="Scan or type barcode"]') ||
+                   parent.document.querySelector('input[placeholder*="DT6qbz2RRMA"]') ||
+                   parent.document.querySelector('.stTextInput input');
+        
+        if (input) {
+            input.focus();
+            input.click();
+        }
+    }
+    
+    // Focus immediately
+    focusInput();
+    
+    // Focus on any click in the parent document
+    parent.document.addEventListener('click', function(e) {
+        // Small delay to ensure Streamlit has processed the click
+        setTimeout(focusInput, 50);
+    });
+    
+    // Retry focusing periodically for the first few seconds
+    let retryCount = 0;
+    const retryInterval = setInterval(function() {
+        focusInput();
+        retryCount++;
+        if (retryCount > 10) {
+            clearInterval(retryInterval);
+        }
+    }, 200);
+</script>
+""", height=0)
 
 col1, col2, col3 = st.columns(3)
 

@@ -15,11 +15,13 @@ A professional Streamlit web application for generating and printing Code128 bar
 
 ## 📋 Requirements
 
-- Python 3.7+
+- Python 3.11 (recommended - avoid 3.12 or higher due to compatibility issues)
 - Windows (for full printing functionality)
 - Available system printer
 
 ## 🛠️ Installation
+
+### Option 1: Local Installation (Recommended)
 
 1. **Clone the repository:**
    ```bash
@@ -31,15 +33,37 @@ A professional Streamlit web application for generating and printing Code128 bar
    ```bash
    pip install -r requirements.txt
    ```
+   **or with Conda:**
+   ```
+   conda create -n BarcodeApp python=3.11 streamlit pandas python-barcode[images] Pillow==9.5.0 pywin32
+
+   conda activate BarcodeApp
+   ```
 
 3. **Run the application:**
    ```bash
    streamlit run BarcodeApp.py
    ```
-    or
-    ```
-    streamlit run https://raw.githubusercontent.com/dannyphamv/streamlit-BarcodeApp/refs/heads/main/BarcodeApp.py
-    ```
+
+### Option 2: Remote Installation (Quick Start)
+
+Run directly from GitHub without cloning:
+
+1. **Install required dependencies:**
+   ```bash
+   pip install streamlit pandas python-barcode[images] Pillow==9.5.0 pywin32
+   ```
+   **or with Conda:**
+   ```
+   conda create -n BarcodeApp python=3.11 streamlit pandas python-barcode[images] Pillow==9.5.0 pywin32
+
+   conda activate BarcodeApp
+   ```
+
+2. **Run the application:**
+   ```bash
+   streamlit run https://raw.githubusercontent.com/dannyphamv/streamlit-BarcodeApp/refs/heads/main/BarcodeApp.py
+   ```
 
 ## 📦 Dependencies
 
