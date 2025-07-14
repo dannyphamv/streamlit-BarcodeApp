@@ -207,14 +207,13 @@ if "previous_barcode" not in st.session_state:
     st.session_state.previous_barcode = ""
 
 input_barcode = st.text_input(
-    "Scan or type barcode, then hit Enter:",
+    "Scan or type barcode, then hit Enter",
     key="barcode_input",
     placeholder="ex. DT6qbz2RRMA",
 )
 
 # Auto-focus using HTML/JavaScript injection
-components.html(
-    """
+components.html("""
 <script>
     function focusInput() {
         // Try multiple selectors to find the input
@@ -248,9 +247,7 @@ components.html(
         }
     }, 200);
 </script>
-""",
-    height=0,
-)
+""", height=0)
 
 col1, col2, col3 = st.columns(3)
 
@@ -337,7 +334,4 @@ if not df.empty:
             )
 else:
     st.sidebar.dataframe(df, use_container_width=True, hide_index=True)
-    st.sidebar.write("No print history available.")
-
-st.divider()
-st.write("Hosted on [GitHub](https://github.com/dannyphamv/streamlit-BarcodeApp).")
+    st.sidebar.write("No print history available")
