@@ -2,10 +2,6 @@
 
 A professional Streamlit web application for generating and printing Code128 barcodes with comprehensive print history tracking and management features.
 
-To run:
-```
-streamlit run https://raw.githubusercontent.com/dannyphamv/streamlit-BarcodeApp/refs/heads/main/BarcodeApp.py
-```
 ## 🚀 Features
 
 - **Barcode Generation**: Generate Code128 barcodes from text input
@@ -40,6 +36,10 @@ streamlit run https://raw.githubusercontent.com/dannyphamv/streamlit-BarcodeApp/
    ```bash
    streamlit run BarcodeApp.py
    ```
+    or
+    ```
+    streamlit run https://raw.githubusercontent.com/dannyphamv/streamlit-BarcodeApp/refs/heads/main/BarcodeApp.py
+    ```
 
 ## 📦 Dependencies
 
@@ -113,10 +113,6 @@ streamlit-BarcodeApp/
    ```bash
    pip install pywin32
    ```
-
-### Platform Limitations
-- **Windows**: Full functionality including printing
-- **macOS/Linux**: Barcode generation and viewing only (printing not supported)
 
 ## 🤝 Contributing
 
